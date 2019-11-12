@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>lib/s390base.pm</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' href='./style.css' />
+</head>
+
+<body>
+
+
+
+<ul id="index"><li><a href="./index.html"><i>&lt;= Back to file list</i></a></li>
+  <li><a href="#s390base">s390base</a>
+    <ul>
+      <li><a href="#copy_testsuite">copy_testsuite</a></li>
+      <li><a href="#execute_script">execute_script</a></li>
+      <li><a href="#cleanup_testsuite">cleanup_testsuite</a></li>
+    </ul>
+  </li>
+</ul><h1>lib/s390base.pm</h1>
+
+<h1 id="s390base">s390base</h1>
+
+<p>Helper functions for s390 console tests</p>
+
+<h2 id="copy_testsuite">copy_testsuite</h2>
+
+<pre><code> copy_testsuite($tc);</code></pre>
+
+<p>Fetch the testcase and common libraries from openQA server. The parameter <code>$tc</code> is the name of testcase and common library. It is the part of script path &#39;$script_path&#39;.</p>
+
+<h2 id="execute_script">execute_script</h2>
+
+<pre><code> execute_script($script, $scriptargs, $timeout);</code></pre>
+
+<p>Execute <code>$script</code> with arguments <code>$scriptargs</code> and upload STDERR and STDOUT as script logs. The maximum execution time of the script is defined by <code>$timeout</code>.</p>
+
+<h2 id="cleanup_testsuite">cleanup_testsuite</h2>
+
+<pre><code> cleanup_testsuite();</code></pre>
+
+<p>Currently it just returns value 1. It should be able to remove files saved at ./tmp</p>
+
+<p>See https://github.com/os-autoinst/os-autoinst-distri-opensuse/pull/8634</p>
+
+
+</body>
+
+</html>
+
+
