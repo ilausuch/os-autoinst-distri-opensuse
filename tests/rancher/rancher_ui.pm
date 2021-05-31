@@ -8,7 +8,7 @@
 # without any warranty.
 #
 # Summary: Web browser UI test for rancher container
-# Maintainer: George Gkioulis <ggkioulis@suse.com>
+# Maintainer: George Gkioulis <ggkioulis@suse.com>, Ivan Lausuch <ilausuch@suse.com>
 
 use base 'x11test';
 use strict;
@@ -16,6 +16,7 @@ use warnings;
 use testapi;
 use utils;
 use x11utils 'ensure_unlocked_desktop';
+use selenium;
 
 sub run {
     my ($self) = @_;
@@ -24,14 +25,21 @@ sub run {
     ensure_unlocked_desktop();
 
     # start firefox
-    $self->start_firefox_with_profile();
-    $self->firefox_open_url('https://localhost');
-    assert_and_click('security_risk_advanced');
-    send_key('pgdn');
-    assert_and_click('security_risk_continue');
-    assert_screen('welcome_to_rancher');
+    install_chromium;
+    enable_selenium_port;
 
-    $self->exit_firefox();
+    my $driver = selenium_driver;
+    $driver->open("https://localhost");
+    wait_for_page_to_load()
+
+    # $self->start_firefox_with_profile();
+    # $self->firefox_open_url('https://localhost');
+    # assert_and_click('security_risk_advanced');
+    # send_key('pgdn');
+    # assert_and_click('security_risk_continue');
+    # assert_screen('welcome_to_rancher');
+
+    # $self->exit_firefox();
 }
 
 1;
